@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <math.h>
@@ -48,7 +47,7 @@ int main()
 			std::cout << "*";
 		}std::cout << std::endl;
 	}
-	
+
 	std::cout << std::endl;
 	std::cout << "task 7" << std::endl;
 	for (int i = n; i > 0; i--) {
@@ -66,35 +65,35 @@ int main()
 		}
 		std::cout << std::endl;
 	}
-	
+
 	for (int i = 1; i < n; i++) {
 		for (int j = 0; j <= i; j++) {
-            std::cout << "*";
-        }
+			std::cout << "*";
+		}
 		std::cout << std::endl;
 	}
-	
-	
+
+
 	std::cout << "task 9" << std::endl;
-    
-    for (int i = n; i > 0; i-= 2) {
-        for (int j = 0; j < (n - i) / 2; j++) {
-            std::cout << " ";
-        }
-        for (int j = 0; j < i; j++) {
-            std::cout << "*";
-        }
-        std::cout << std::endl;
-    }
-    for (int i = 0; i <= n; i+= 2) {
-        for (int j = n-i; j > (n - i) / 2; j--) {
-            std::cout << " ";
-        }
-        for (int j = 0; j <= i; j++) {
-            std::cout << "*";
-        }
-        std::cout << std::endl;
-    }
+
+	for (int i = n; i > 0; i -= 2) {
+		for (int j = 0; j < (n - i) / 2; j++) {
+			std::cout << " ";
+		}
+		for (int j = 0; j < i; j++) {
+			std::cout << "*";
+		}
+		std::cout << std::endl;
+	}
+	for (int i = 2; i < n; i += 2) {
+		for (int j = 0; j < (n - i) / 2; j++) {
+			std::cout << " ";
+		}
+		for (int j = 0; j <= i; j++) {
+			std::cout << "*";
+		}
+		std::cout << std::endl;
+	}
 
 
 
