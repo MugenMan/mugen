@@ -61,11 +61,38 @@ for (int i = 0; i < n; i++){
 }
     std::cout << std::endl;
 
-
 std::cout << "task 5" << std::endl;
 for (int i = 0; i < n; i++){
     for (int j = 0; j < n; j++){
-        if (i==j || i>j && j<=n){
+        if ( (j >= i) && (j <= n-i-1) ){
+            std::cout << "*";
+        }else{
+            std::cout << ".";
+        }
+    }
+    std::cout << std::endl;
+}
+    std::cout << std::endl;
+
+std::cout << "task 6" << std::endl;
+for (int i = 0; i < n; i++){
+    for (int j = 0; j < n; j++){
+        if ( ((j <= i) || (j >= n-i-1)) && 
+        ( (j >= i) || (j <= n-i-1) ) ){
+            std::cout << "*";
+        }else{
+            std::cout << ".";
+        }
+    }
+    std::cout << std::endl;
+}
+    std::cout << std::endl;
+
+std::cout << "task 7" << std::endl;
+for (int i = 0; i < n; i++){
+    for (int j = 0; j < n; j++){
+        if ( ((j <= i) && (j >= n-i-1)) || 
+        ( (j >= i) && (j <= n-i-1) ) ){
             std::cout << "*";
         }else{
             std::cout << ".";
