@@ -4,7 +4,7 @@
 
 int main()
 {
-int n, c1, c2, d,r=0,l=0;
+int n, d,r=0,l=0;
     do {
         d = 0;
         std::cout << "enter number: ";

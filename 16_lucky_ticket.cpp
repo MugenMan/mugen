@@ -11,11 +11,11 @@ int main()
     for (int i = 0; i < 6; i++){
         if (i < 3){
             r += n % 10;
-            n /= 10;
-    } else {
-        l += n % 10;
-        n /= 10;
+        } else {
+            l += n % 10;
+        
         }
+        n /= 10;
     } 
 
     std::cout << "sum of right = " << r << std::endl;
