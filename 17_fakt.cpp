@@ -4,22 +4,24 @@
 
 int main()
 {
-	int n,f=1,f2=1,f3=1;
+	int n,f=1,f2=1,f3=1,j=1,k=1;
     std::cout << "enter number n: " << std::endl;
 	std::cin >> n;
 
     for (int i = 1; i <n; i++){
-        f=f*(i+1);
+        f*=(i+1);
     } 
     
-   
     do {
-        f2=f2*(f2+1);
+        f2*=j;
+        j++;
     } 
-    while (f2==720);
+    while (j!=n+1);
 
-    while (f3!=f){
-        f3=f3*(f3+1);
+
+    while (k!=n+1){
+        f3*=k;
+        k++;
     }
 
     std::cout << "fakt for = " << f << std::endl;
