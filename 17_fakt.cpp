@@ -16,10 +16,10 @@ int main()
         f2*=j;
         j++;
     } 
-    while (j!=n+1);
+    while (j<=n);
 
 
-    while (k!=n+1){
+    while (k<=n){
         f3*=k;
         k++;
     }
