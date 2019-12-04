@@ -28,13 +28,16 @@ void fiba(int x, int t=0){
 
 int main()
 {
-	int N, otv;
+	int N=0;
     std::cout << "enter N: " << std::endl;
 	std::cin >> N;
-
-	fiba(N,0);
-	fiba(N-2,+1);
-	fiba(N-4,+2);
+	
+	for (int i = N; i > 0; i -= 2){
+		fiba(i,(N - i) / 2);	
+	}
+	for (int i = 3; i <= N; i += 2){
+		fiba(i,(N - i) / 2);	
+	}
 	
    
         return 0;
