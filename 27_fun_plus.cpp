@@ -1,17 +1,28 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+void fun(int n){
+    // if(n == 0)
+    //     return;
+    // else{
+    //     std::cout << n % 10; 
+        
+    //     fun(n/10); 
+    // }
 
-void fun(int n) {
-    int a=n;
-	while(n != 0){
-    a=n/10;
-    n/=10;
-    std::cout << a;
-    std::cout << "fact = " << a << std::endl;
-
-}std::cout << std::endl;
+	if(n == 0){
+        return;
+		}
+    else {
+        fun(n/10); 
+    }
+	if (n % 10==9) {
+		std::cout << "0"; 
+        //fun(n/10);
+		}else
+	std::cout << n % 10+1; 
 }
+
 
 
 int main()

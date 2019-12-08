@@ -11,20 +11,32 @@ void draw_line(int size) {
 }
 
 void draw_figure(int from, int to, int step) {
-	for (int i = from; i > to; i+=step) {
-		for (int j = 0; j < 1; j++) {
-			draw_line(i);
+	// while (from>=to ){
+
+    //    draw_line(from);
+	//    from+=step;
+    // }
+	// for (int i = from; i >= to; i+=step) {
+	// 		draw_line(i);	
+	// }
+	
+	if (from >=to){
+		for (int i = from; i >= to; i+=step) {
+			draw_line(i);	
 		}
 	}
-	for (int i = to; i <= from; i-=step) {
-	 	for (int j = 0; j < 1; j++) {
-	 		draw_line(i);
-	 	}
-	 } return;
+	else {
+		for (int i = from; i <= to; i+=step) {
+			draw_line(i);	
+		}
 	}
+	
+}
+	
 
 void draw_task(int n) {
-	draw_figure(n,n-4,-2);
+	draw_figure(n,3,-2);
+	draw_figure(5,n,+2);
 	return;
 }
 
