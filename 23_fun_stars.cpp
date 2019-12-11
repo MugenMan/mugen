@@ -35,9 +35,8 @@ void draw_figure(int from, int to, int step) {
 	
 
 void draw_task(int n) {
-	draw_figure(n,3,-2);
-	draw_figure(5,n,+2);
-	return;
+	draw_figure(n,2,-1);
+	draw_figure(1,n,+1);
 }
 
 int main()
