@@ -7,17 +7,17 @@ int fun(int n) {
 	while (a <= n){
         b+=a;
         a+=2;
-        std::cout << "b = " << b << std::endl;
-        std::cout << "a = " << a << std::endl;
     }
 		return b;
 }
-int fun1(int n) {
-    if (n<=0){ 
+int sum(int n) {
+    if (n%2==0){ 
+        n-=1;
+    }
+    if (n==1){
         return 1;
-        }
-    
-    return fun1(n-1); 
+    } 
+    return sum(n-1)+n; 
 }
 
 int main()
@@ -27,8 +27,8 @@ int main()
 	std::cin >> n;
 	std::cout << std::endl;
 	
-	std::cout << "sum = " << fun(n) << std::endl;
-    std::cout << "summmmmmmm = " << fun1(n) << std::endl;
+	std::cout << "sum_for = " << fun(n) << std::endl;
+    std::cout << "sum = " << sum(n) << std::endl;
 	
 
 	//std::cin.get(); std::cin.get();
