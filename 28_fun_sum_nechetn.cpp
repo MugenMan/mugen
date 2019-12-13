@@ -3,21 +3,28 @@
 #include <math.h>
 
 int fun(int n) {
-    int a=1, b=0;
-	while (a <= n){
-        b+=a;
-        a+=2;
+    
+    int a=n, b=0;
+	while (n!=1){
+        if (n%2==0){
+            n-=1;}
+           
+        
+       
+        
+        n+=n-2;
+       
     }
-		return b;
+		return n;
 }
 int sum(int n) {
-    if (n%2==0){ 
+    if (n%2 == 0){ 
         n-=1;
     }
-    if (n==1){
+    if (n == 1){
         return 1;
     } 
-    return sum(n-1)+n; 
+    return sum(n-2)+n; 
 }
 
 int main()
