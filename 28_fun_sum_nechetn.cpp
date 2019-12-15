@@ -3,6 +3,7 @@
 #include <math.h>
 
 int fun(int n) {
+<<<<<<< HEAD
     int a=n;
 	while (n!=1){
        if (n%2==0){
@@ -13,12 +14,27 @@ int fun(int n) {
        a+=n;
     }
 		return a;
+=======
+    
+    int a=n, b=0;
+	while (n!=1){
+        if (n%2==0){
+            n-=1;}
+           
+        
+       
+        
+        n+=n-2;
+       
+    }
+		return n;
+>>>>>>> 557d1fd67ea2f11ac095baee1f4c47ea4cf31145
 }
 int sum(int n) {
-    if (n%2==0){ 
+    if (n%2 == 0){ 
         n-=1;
     }
-    if (n==1){
+    if (n == 1){
         return 1;
     } 
     return sum(n-2)+n; 
