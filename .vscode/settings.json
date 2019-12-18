@@ -39,6 +39,12 @@
         "*.tcc": "cpp",
         "clocale": "cpp",
         "cwctype": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "array": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "fstream": "cpp",
+        "optional": "cpp",
+        "sstream": "cpp"
     }
 }
