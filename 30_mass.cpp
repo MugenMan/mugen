@@ -6,6 +6,7 @@
 
 int main() {
 int sum=0,N,a;
+bool b=true;
     srand(time(NULL));
     std::cout << "Enter size arr: " << std::flush;
     std::cin >> N;
@@ -24,16 +25,13 @@ int sum=0,N,a;
     std::cout << "Enter number: " << std::flush;
     std::cin >> a;
     for (int k = 0; k < arr.size(); k++){
-        bool b=false;
-        if ((a==arr[k]) && (b==false))
+        if (a==arr[k])
         {   b=false;
             std::cout << "index= " << k << std::endl;   
         }
-        else {
-            b=true;
+    }
+    if (b==true){
             std::cout << "no" << std::flush;  
         }
-        //sum+=arr[i];
-    }
 
 }
