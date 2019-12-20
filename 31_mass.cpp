@@ -5,7 +5,7 @@
 
 
 int main() {
-int sum=0,N,a;
+int sum=0,N,a=0,b=0;
 bool found=false;
     srand(time(NULL));
     std::cout << "Enter size arr: " << std::flush;
@@ -21,16 +21,26 @@ bool found=false;
         std::cout << j << ". " << arr[j] << std::endl;
     }
 
-    std::cout << "Enter number: " << std::flush;
-    std::cin >> a;
+    // std::cout << "Enter number: " << std::flush;
+    // std::cin >> a;
     for (int k = 0; k < arr.size(); k++){
-        if (a==arr[k])
-        {   found=true;
-            std::cout << "index= " << k << std::endl;   
-        }
-    }
-    if (!found){
-            std::cout << "no" << std::endl;  
-        }
 
+        if (arr[k]>a){
+            a=arr[k];
+        }
+        if (arr[k]>b){
+            b=arr[k];
+        }
+        else if ((arr[k]<a)||(arr[k]<b)){
+            
+        }
+        else if (arr[k]<b){
+            a=arr[k+1];
+        }
+         std::cout << "a " << a << std::endl;
+         std::cout << "b " << b << std::endl;
+    }
+        
+    
+    std::cout << "max= " << a << std::endl;
 }
