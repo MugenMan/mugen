@@ -24,11 +24,13 @@ int sum=0,N,a;
     std::cout << "Enter number: " << std::flush;
     std::cin >> a;
     for (int k = 0; k < arr.size(); k++){
-        if (a==arr[k])
-        {
+        bool b=false;
+        if ((a==arr[k]) && (b==false))
+        {   b=false;
             std::cout << "index= " << k << std::endl;   
         }
-        else if ((a!=arr[k]) && (a==arr[k])){
+        else {
+            b=true;
             std::cout << "no" << std::flush;  
         }
         //sum+=arr[i];
