@@ -34,30 +34,40 @@ bool found=false;
     }
 
 
-    bool a=false, b=true, c=true, d=true;
+    bool a=true, b=true;
     for (int k = 0; k < arr.size(); k++){
-        if (arr[k]==5){
-            a=true;
-        }
-        else if (arr[k]!=5){
-            b=false;
-        }
+    //     if (arr[k]==5){
+    //         a=true;
+    //     }
+    //     else if (arr[k]!=5){
+    //         b=false;
+    //     }
  
 
-       if (arr[k]==2){
-            c=false;
+    //    if (arr[k]==2){
+    //         c=false;
+    //     }
+    //    if (arr[k]!=2){
+    //         d=false;
+    //     }
+        if (arr[k]==5){
+            a=false;
         }
-       if (arr[k]!=2){
-            d=false;
+        else if (arr[k]==2){
+            b=false;
+        }
+        else if (arr[k]>3){
+            a=true;
         }
          //std::cout << "b " << b << std::endl;
     }
-        
-    if (a && b){std::cout << "otl" << std::endl;}
-     if (!c){
-         std::cout << "dw" << std::endl;
-         }
-     if (c && !(a && b)){
-         std::cout << "norm" << std::endl;
-         }
+        if (!a){
+            std::cout << "5" << std::endl;
+        } 
+        if (!b || (!b && a)){
+            std::cout << "2" << std::endl;
+        }
+        if  (b && a){
+            std::cout << "3" << std::endl;
+        }
 }

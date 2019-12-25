@@ -14,7 +14,7 @@ bool found=false;
     std::vector <int> arr(N);
 
     for (int i = 0; i < arr.size(); i++){
-        arr[i]=rand()%(10+5+1)-5;
+        arr[i]=rand()%(3+10+1)-10;
   
     }
     for (int j = 0; j < arr.size(); j++){
@@ -22,18 +22,17 @@ bool found=false;
     }
 
 
-    int a=arr[0], b=0;
+    int a=arr[0];
     for (int k = 0; k < arr.size(); k++){
 
-       if (arr[k]>a){
-           a=arr[k];
-           b=k;
-      }
-         
-         //std::cout << "a " << a << std::endl;
+        if (arr[k]>=a){
+           a=k;
+        }
+        
+         std::cout << "a " << a << std::endl;
          //std::cout << "b " << b << std::endl;
     }
         
     
-    std::cout << "max " << a << " index - " << b << std::endl;
+    std::cout << "max " << arr[a] << " index: " << a << std::endl;
 }
