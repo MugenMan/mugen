@@ -22,15 +22,14 @@ bool found=false;
     }
 
 
-    int a=arr[0];
+    int a=0;
     for (int k = 0; k < arr.size(); k++){
 
-        if (arr[k]>=a){
+        if (arr[k]>arr[a]){
            a=k;
         }
         
-         std::cout << "a " << a << std::endl;
-         //std::cout << "b " << b << std::endl;
+         
     }
         
     

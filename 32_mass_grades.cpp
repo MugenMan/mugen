@@ -50,24 +50,32 @@ bool found=false;
     //    if (arr[k]!=2){
     //         d=false;
     //     }
-        if (arr[k]==5){
+        // if (arr[k]==5){
+        //     a=false;
+        // }
+        // else if (arr[k]==2){
+        //     b=false;
+        // }
+        // else if (arr[k]>3){
+        //     a=true;
+        // }
+
+        if (arr[k]!=5){
             a=false;
         }
-        else if (arr[k]==2){
+        if (arr[k]==2){
             b=false;
         }
-        else if (arr[k]>3){
-            a=true;
-        }
+
          //std::cout << "b " << b << std::endl;
     }
-        if (!a){
-            std::cout << "5" << std::endl;
+        if (a){
+            std::cout << "otl" << std::endl;
         } 
-        if (!b || (!b && a)){
+        else if (!b){
             std::cout << "2" << std::endl;
         }
-        if  (b && a){
-            std::cout << "3" << std::endl;
+        else if  (b){
+            std::cout << "sredn" << std::endl;
         }
 }
