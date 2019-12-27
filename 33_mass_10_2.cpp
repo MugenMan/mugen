@@ -13,9 +13,8 @@ bool found=false;
 
     std::vector <int> arr(N);
 
-
     for (int i = 0; i < arr.size(); i++){
-        arr[i]=rand()%(5-2+1)+2;
+        arr[i]=rand()%(100-10+1)+10;
   
     }
     for (int j = 0; j < arr.size(); j++){
@@ -23,26 +22,18 @@ bool found=false;
     }
 
 
-    bool a=true, b=true;
+    int a=0;
     for (int k = 0; k < arr.size(); k++){
-    
+    while (arr[k]!=0){
 
-        if (arr[k]!=5){
-            a=false;
-        }
-        if (arr[k]==2){
-            b=false;
-        }
-
-         //std::cout << "b " << b << std::endl;
+        a=arr[k]%2;
+        arr[k]/=2;
+        std::cout << "a= " << a;
+        std::cout << "arr[k]= " << arr[k];
     }
-        if (a){
-            std::cout << "otl" << std::endl;
-        } 
-        else if (!b){
-            std::cout << "2" << std::endl;
-        }
-        else if  (b){
-            std::cout << "sredn" << std::endl;
-        }
+        
+         
+    }
+        
+ 
 }
