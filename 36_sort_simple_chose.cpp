@@ -22,25 +22,24 @@ bool found=false;
         std::cout << j << ". " << arr[j] << std::endl;
     }
 
-    int a;
-    bool b=false;
-    while (!b){
-        b=true;
+    int a=arr[0], b=0,c=0;
+    for (int k = 0; k < arr.size()-1; k++){
         for (int s = 0; s < arr.size()-1; s++){
-            if (arr[s] > arr[s+1]){
-                a = arr[s];
-                arr[s] = arr[s+1];
-                arr[s+1] = a;
-                b=false;
+            if (arr[s] < arr[c]){
+                c = s;
             }
+               
+            }
+             b = arr[k];
+             std::cout << "a=" << c <<std::endl;
+             
+             arr[k] = arr[c];
+             arr[c] = b;
+             
         }
-    }
-        // for (int s=0; s < arr.size(); s++){
-        //     //if (arr[k] > arr[b]){
-        //         arr[k]=b;
-        //         arr[k+1]=a;
-            
-        // }
+        
+    
+
     
     std::cout << std::endl;
     for (int j = 0; j < arr.size(); j++){
