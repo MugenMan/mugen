@@ -24,18 +24,9 @@ bool found=false;
 
     int a, b;
     for (int k = 0; k < arr.size()-1; k++){
-        a=k;
-        for (int s = k; s < arr.size(); s++){
-            if (arr[s] < arr[a]){
-                a = s;
-            }
-            //std::cout << "arrs=" << arr[s] <<std::endl;
-            }
-            //std::cout << "arrA=" << arr[a] <<std::endl;
-            
-            b=arr[k];
-            arr[k] = arr[a];
-            arr[a] = b;
+        while (arr[]){
+
+        }
 
             //std::cout << "arrk=" << arr[k] <<std::endl;
             //std::cout << "arrc=" << arr[a] <<std::endl;
