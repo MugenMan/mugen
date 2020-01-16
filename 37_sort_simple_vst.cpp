@@ -23,9 +23,11 @@ bool found=false;
     }
 
     int a, b;
-    for (int k = 0; k < arr.size()-1; k++){
-        while (arr[]){
-
+    for (int k = 1; k < arr.size(); k++){
+        a=arr[k];
+        while (arr[k-1]>a){
+            arr[k]=arr[k-1];
+            arr[k-1]=a;
         }
 
             //std::cout << "arrk=" << arr[k] <<std::endl;
