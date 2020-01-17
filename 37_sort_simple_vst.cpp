@@ -5,7 +5,7 @@
 
 
 int main() {
-int sum=0,N;
+int N;
 bool found=false;
     srand(time(NULL));
     std::cout << "Enter size arr: " << std::flush;
@@ -15,7 +15,7 @@ bool found=false;
 
 
     for (int i = 0; i < arr.size(); i++){
-        arr[i]=rand()%(10-1+1)+1;
+        arr[i]=rand()%(10+10+1)-10;
   
     }
     for (int j = 0; j < arr.size(); j++){
@@ -24,14 +24,20 @@ bool found=false;
 
     int a, b;
     for (int k = 1; k < arr.size(); k++){
-        a=arr[k];
-        while (arr[k-1]>a){
-            arr[k]=arr[k-1];
-            arr[k-1]=a;
+        a = arr[k];
+        b = k-1;
+        while ((arr[b] > a) && (b >= 0)){
+            arr[b+1] = arr[b];
+            arr[b] = a;
+            b--;
         }
 
-            //std::cout << "arrk=" << arr[k] <<std::endl;
-            //std::cout << "arrc=" << arr[a] <<std::endl;
+
+
+            std::cout << "a=" << a <<std::endl;
+            std::cout << "arrb=" << arr[b] <<std::endl;
+            std::cout << "arrb+1=" << arr[b+1] <<std::endl;
+            std::cout << "b=" << b <<std::endl;
         //     for (int j = 0; j < arr.size(); j++){
         // std::cout << j << ". " << arr[j] << std::endl;
         //}
