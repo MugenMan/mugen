@@ -45,23 +45,38 @@ int N, n;
     std::cout << "Enter number n: " << std::endl;
     std::cin >> n; 
 
-    int start=0, finish=N, f;
-    for (int k= 0; k < N; k++){
-    	f= (start+finish)/2;
+    int start=0, finish=N-1, f;
+    // for (int k= 0; k < N; k++){
+    // 	f= (start+finish)/2;
+    //     if (arr[f] == n){
+    //         std::cout<< n <<std::endl;
+    //     }
+    //     else if (arr[f]<n){
+    //         start= f+1;
+    //     }
+    //     else if (arr[f]>n){
+    //         finish= f-1;
+    //     }
+        
+    // }
+    
+    while (finish-start>0){
+        f= (start+finish)/2;
         if (arr[f] == n){
-            std::cout<< n <<std::endl;
+            //std::cout<< n <<std::endl;
+            break;
         }
         else if (arr[f]<n){
             start= f+1;
         }
         else {
             finish= f-1;
+            
         }
-        std::cout<< "f=" << f <<std::endl;
-        std::cout<< "finish=" << finish <<std::endl;
-        std::cout<< "start=" << start <<std::endl;
+        // std::cout<< "finish=" << finish <<std::endl;
+        // std::cout<< "start=" << start <<std::endl;
+        // std::cout<< "N=" << N <<std::endl;
     }
-    
     if (arr[f] == n){
         std::cout << "index= " << f <<std::endl;}
     else {std::cout<< "not found" <<std::endl;}
