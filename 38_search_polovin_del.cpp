@@ -57,15 +57,14 @@ int N, n;
         else {
             finish= f-1;
         }
-        std::cout<< "f=" << f <<std::endl;
-        std::cout<< "finish=" << finish <<std::endl;
-        std::cout<< "start=" << start <<std::endl;
+        // std::cout<< "f=" << f <<std::endl;
+        // std::cout<< "finish=" << finish <<std::endl;
+        // std::cout<< "start=" << start <<std::endl;
     }
     
     if (arr[f] == n){
         std::cout << "index= " << f <<std::endl;}
     else {std::cout<< "not found" <<std::endl;}
-        
         
         //std::cout << "r=" << r <<std::endl;
     // int r = N/2, z;
