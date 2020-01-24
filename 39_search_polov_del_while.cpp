@@ -14,7 +14,7 @@ int N, n;
 
 
     for (int i = 0; i < arr.size(); i++){
-        arr[i]=rand()%(100-1+1)+1;
+        arr[i]=rand()%(10-1+1)+1;
   
     }
     for (int j = 0; j < arr.size(); j++){
