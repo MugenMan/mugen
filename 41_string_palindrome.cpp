@@ -10,20 +10,34 @@ int main (){
     std::getline(std::cin, s); //вывод с пробелами
     
     //std::cout << s << std::endl;
- 
-    for(int i= 0, j= s.size()-1; i < (s.size()-1)/2; i++,j--)
+    std::cout<<"s="<< (s.size()-1)/2 << std::endl;
+    for(int i= 0, j= s.size()-1; i < ((s.size()-1)/2); i++,j--)
     {
-        if (s[i]==' ')
+        
+        if (s[i]==' '){
             i++;
-        if(s[j]==' ')
+        }
+        if (s[j]==' '){
             j--;
+        }
+        std::cout<<"a="<< a << std::endl;
+        std::cout<<"s[i]="<< s[i] << std::endl;
+        std::cout<<"i="<< i << std::endl;
+        std::cout<<"s[j]="<< s[j] << std::endl;
+        std::cout<<"j="<< j << std::endl;
         if (s[i]!=s[j]){
             a=false;
             break;
         }
- 
+        
+        
+        // if (i==(s.size()-1)/2){
+
+        // }
+        
+        
+        
     }
-    
     if(a){
         std::cout<<"palindrome"<<std::endl;
         }
