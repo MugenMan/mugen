@@ -41,7 +41,7 @@ int main (){
             if (s[j]==' '){
                 j--;
             }
-            else if (s[i]!=' ' && s[j]!=' '){
+            if (s[i]!=' ' && s[j]!=' '){
                 break;
             }
         }   
