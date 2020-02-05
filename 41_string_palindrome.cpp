@@ -34,17 +34,28 @@ int main (){
         // 		j++;
         // 	}
         // }
-        for (int i= 0, j= s.size()-1; i <= j; i++,j--){
+        for (i; i <= j; i++){
             if (s[i]==' '){
                 i++;
             }
-
-
+            if (s[i]!=' '){
+                break;
+            }
             
+        }
+        std::cout << "si= " << s[i] << std::endl;
+        //std::cout << "i= " << i << std::endl;
+        for (j; i <= j; j--){   
             if (s[j]==' '){
                 j--;
             }
+            if (s[j]!=' '){
+                break;
+            }
+            
         }
+        std::cout << "sj= " << s[j] << std::endl;
+        //std::cout << "j= " << j << std::endl;
         if (s[i]!=s[j]){
             a=false;
             break;
