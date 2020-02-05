@@ -34,28 +34,43 @@ int main (){
         // 		j++;
         // 	}
         // }
-        for (i; i <= j; i++){
+        while (i < j){
             if (s[i]==' '){
                 i++;
             }
-            if (s[i]!=' '){
-                break;
-            }
-            
-        }
-        std::cout << "si= " << s[i] << std::endl;
-        //std::cout << "i= " << i << std::endl;
-        for (j; i <= j; j--){   
             if (s[j]==' '){
                 j--;
             }
-            if (s[j]!=' '){
+            else if (s[i]!=' ' && s[j]!=' '){
                 break;
             }
-            
-        }
-        std::cout << "sj= " << s[j] << std::endl;
-        //std::cout << "j= " << j << std::endl;
+        }   
+        std::cout << "s[i]= " << s[i] << std::endl;
+        std::cout << "i= " << i << std::endl;
+        std::cout << "s[j]= " << s[j] << std::endl;
+        std::cout << "j= " << j << std::endl;
+
+
+        // for (i; i<j; i++){
+        //     if (s[i]==' '){
+        //         i++;
+        //     }
+        //     if (s[i]!=' '){
+        //         break;
+        //     }
+        // }
+        // std::cout << "s[i]= " << s[i] << std::endl;
+        // std::cout << "i= " << i << std::endl;
+        // for (j; i<j; j--){
+        //     if (s[j]==' '){
+        //         j--;
+        //     }
+        //     if (s[j]!=' '){
+        //         break;
+        //     }
+        // }
+        // std::cout << "s[j]= " << s[j] << std::endl;
+        // std::cout << "j= " << j << std::endl;
         if (s[i]!=s[j]){
             a=false;
             break;
