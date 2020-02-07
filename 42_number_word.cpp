@@ -13,7 +13,7 @@ int main(){
     //std::getline(std::cin, s); //вывод с пробелами
 
     std::cin>> number;
-    std::cout << "khhkjhjk= "<< number%1000/100 <<std::endl;
+    std::cout << "khhkjhjk= "<< number%10 <<std::endl;
     b = number;
     d = number/10;
     while (b != 0){
@@ -67,12 +67,12 @@ int main(){
             if (number%100/10 == 1 && i+10 == number%100){
                 std::cout << ones[number/100] << " hundred " << teens[i] <<std::endl;
             }
-            if (number%100/10 > 1 && i == number%10 && i > 0){
+            if (number%100/10 > 1 && i == number%10 ){
                 if (number%10 > 0){
                     std::cout << ones[number/100] << " hundred " << tens[number%100/10] <<" "<< ones[i] <<std::endl;
                 }
                 else {
-                    std::cout << ones[number/100] << " hundred " << tens[i] <<std::endl;
+                    std::cout << ones[number/100] << " hundred " << tens[number%100/10] <<std::endl;
                 }
             }
             //std::cout << ones[d] << "hundred" << ones[i] <<std::endl;
@@ -89,12 +89,12 @@ int main(){
             if (number%100/10 == 1 && i+10 == number%100){ //1000+100+10
                 std::cout << ones[number/1000] << " " << orders[1] << " " << ones[number%1000/100] << " hundred " << teens[i] <<std::endl;
             }
-            if (number%100/10 > 1 && i == number%10 && i > 0){ //1000+100+20+9
+            if (number%100/10 > 1 && i == number%10){ //1000+100+20+9
                 if (number%10 > 0){
                     std::cout << ones[number/1000] << " " << orders[1] << " " << ones[number%1000/100] << " hundred " << tens[number%100/10] <<" "<< ones[number%10] <<std::endl;
                 }
                 else {
-                    std::cout << ones[number/100] << " hundred " << tens[i] <<std::endl;
+                    std::cout << ones[number/1000] << " " << orders[1] << " " << ones[number%1000/100] <<" hundred " << tens[number%100/10] <<std::endl;
                 }
             }
         }
