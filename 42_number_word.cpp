@@ -15,7 +15,6 @@ int main(){
     std::cin>> number;
     std::cout << "khhkjhjk= "<< number%10 <<std::endl;
     b = number;
-    d = number/10;
     while (b != 0){
         b/=10;
         //std::cout<< "b= " << b <<std::endl;
@@ -46,9 +45,9 @@ int main(){
             if (i!=0 && 10+i == number){
                 std::cout << teens[i] <<std::endl;
             }
-            if (d > 1 && number%10 == i && i!=0){
+            if (number/10 > 1 && number%10 == i && i!=0){
                 
-            std::cout << tens[d] << " " << ones[i] <<std::endl;
+            std::cout << tens[number/10] << " " << ones[i] <<std::endl;
         }
         }
 
