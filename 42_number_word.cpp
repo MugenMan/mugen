@@ -13,14 +13,14 @@ int main(){
     //std::getline(std::cin, s); //вывод с пробелами
 
     std::cin>> number;
-    std::cout << "khhkjhjk= "<< number%10 <<std::endl;
+    //std::cout << "khhkjhjk= "<< number%10 <<std::endl;
     b = number;
     while (b != 0){
         b/=10;
         //std::cout<< "b= " << b <<std::endl;
         c++;
     }
-    std::cout<< "c= " << c <<std::endl;
+    //std::cout<< "c= " << c <<std::endl;
 
 
 
