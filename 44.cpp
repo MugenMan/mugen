@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 
 int main(){
     int number, b, c = 0, d = 0, e = 0, f = 0, i=0;
@@ -7,7 +8,7 @@ int main(){
     std::string tens[]={"", "", "twenty", "thirty", "forty", "fivty", "sixty", "seventy", "eighty", "ninty"};
     std::string teens[]={"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
     std::string orders[]={"", "thousand", "million", "billion"};
-
+    std::string test[]={""};
     std::cout << "Enter string: " << std::flush;
     std::cin>> number;
 
@@ -30,6 +31,7 @@ int main(){
         for (int j=0; j<10; j++){ 
 
             if (j*1000 == d && j!=0){
+                
                 std::cout << ones[j] << " thousand" <<std::endl;
                 break;
             }
@@ -86,6 +88,7 @@ int main(){
             std::cout << orders[i] <<std::endl;
         }
     }
+    
 //std::cout << "nnnnnnnnnnn= "<< 6%1000 <<std::endl;
 
 }
