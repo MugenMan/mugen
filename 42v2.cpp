@@ -79,52 +79,39 @@ int main(){
         if (c>=4){
             d=number/1000;
             number=number%1000;
-            f = number/100;
-            int e1 = d%100/10;
+            // f = number/100;
+            // int e1 = d%100/10;
             //d=number%1000;
             //std::cout << "hundred" <<std::endl;
             // if (i*1000 == number){
             //     std::cout << ones[i] << " hundred" <<std::endl;
             //     break;
             // }
-            if (i*1000 == d){
-                std::cout << "one hundred" <<std::endl;
-                break;
-            }
-            if (e1 == 0 && i == d/100 && i > 0){
-                std::cout << ones[i] << " hundred " << ones[d%10] <<std::endl;
-                
-            }
-            if (e1 == 1 && i+10 == d%100){
-                std::cout << ones[d/100] << " hundred " << teens[i] <<std::endl;
-            }
-            if (e1 > 1 && i == d%10 ){
-                if (d%10 > 0){
-                    std::cout << ones[d/100] << " hundred " << tens[e1] <<" "<< ones[i] <<std::endl;
-                }
-                else {
-                    std::cout << ones[d/100] << " hundred " << tens[e1] <<std::endl;
-                }
-            }
-            
+            for (int j=0; j < c; j++){
+
             if (i*1000 == number){
+                if (c == 4){
+                    std::cout << "one hundred" <<std::endl;
+                }
                 std::cout << "one hundred" <<std::endl;
                 break;
             }
-            if (e == 0 && i == f && i > 0){
+            if (number%100/10 == 0 && i == number/100 && i > 0){
                 std::cout << ones[i] << " hundred " << ones[number%10] <<std::endl;
                 
             }
-            if (e == 1 && i+10 == number%100){
-                std::cout << ones[f] << " hundred " << teens[i] <<std::endl;
+            if (number%100/10 == 1 && i+10 == number%100){
+                std::cout << ones[number/100] << " hundred " << teens[i] <<std::endl;
             }
-            if (e > 1 && i == number%10 ){
+            if (number%100/10 > 1 && i == number%10 ){
                 if (number%10 > 0){
-                    std::cout << ones[f] << " hundred " << tens[e] <<" "<< ones[i] <<std::endl;
+                    std::cout << ones[number/100] << " hundred " << tens[number%100/10] <<" "<< ones[i] <<std::endl;
                 }
                 else {
-                    std::cout << ones[f] << " hundred " << tens[e] <<std::endl;
+                    std::cout << ones[number/100] << " hundred " << tens[number%100/10] <<std::endl;
                 }
+            }
+            number=d;
             }
             //number%=100;
             
@@ -155,6 +142,6 @@ int main(){
        
         
     }
-//std::cout << "nnnnnnnnnnn= "<< number/1000 <<std::endl;
+std::cout << "nnnnnnnnnnn= "<< 2713124/1000 <<std::endl;
 
 }
