@@ -6,7 +6,7 @@ int main(){
     std::string ones[]={"","one","two","three", "four", "five", "six", "seven", "eight", "nine"};
     std::string tens[]={"", "", "twenty", "thirty", "forty", "fivty", "sixty", "seventy", "eighty", "ninty"};
     std::string teens[]={"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-    std::string orders[]={"", "thousand", "million", "billion", "trillion"};
+    std::string orders[]={"", "thousand", "million", "billion"};
     //std::string nu;
 
     std::cout << "Enter string: " << std::flush;

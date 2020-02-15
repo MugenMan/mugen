@@ -2,23 +2,19 @@
 #include <string>
 
 int main(){
-    int number, b, c = 0, d = 0, e = 0, f = 0, g = 0;
+    int number, b, c = 0, d = 0, e = 0, f = 0, g = 0, i=0;
     std::string ones[]={"","one","two","three", "four", "five", "six", "seven", "eight", "nine"};
     std::string tens[]={"", "", "twenty", "thirty", "forty", "fivty", "sixty", "seventy", "eighty", "ninty"};
     std::string teens[]={"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-    std::string orders[]={"", "thousand", "million", "billion", "trillion"};
+    std::string orders[]={"", "thousand", "million", "billion"};
 
     std::cout << "Enter string: " << std::flush;
 
     std::cin>> number;
-    b = number;
-    e = number%100/10;
-    f = number/100;
-    while (b != 0){
-        b/=10;
-        g++;
-    }
 
+    if (number == 0){
+        std::cout << "zero" <<std::endl;
+    }
             while (number != 0){
                 d = number%1000;
                 b=d;
@@ -28,18 +24,18 @@ int main(){
                     c++;
                 }
 
-                std::cout << "c=" << c <<std::endl;
-                
                 e = d%100/10;
                 f = d/100;
 
             for (int j=0; j<10; j++){ 
-
-            if (j*1000 == d){
+                
+            if (j*1000 == d && j!=0){
                 std::cout << ones[j] << " thousand" <<std::endl;
                 break;
             }
+            
             if (c == 1){
+            
             if (j == d){
                 std::cout << ones[j] <<std::endl;
             }
@@ -58,7 +54,7 @@ int main(){
                 std::cout << teens[j] <<std::endl;
             }
             if (d/10 > 1 && d%10 == j && j!=0){
-                std::cout << tens[j] << " " << ones[j] <<std::endl;
+                std::cout << tens[d/10] << " " << ones[j] <<std::endl;
             }
             }
 
@@ -88,12 +84,16 @@ int main(){
         
             }
         number/=1000;
-        if (number!=0){
-        std::cout << "orders[j]" <<std::endl;}
+        i++;
+        if (number%1000!=0){
+        std::cout << orders[i] <<std::endl;
+        
+        }
+        
         
         }
 
 
-//std::cout << "nnnnnnnnnnn= "<< 567/10 <<std::endl;
+//std::cout << "nnnnnnnnnnn= "<< 6%1000 <<std::endl;
 
 }
