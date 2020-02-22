@@ -9,8 +9,8 @@ int main(){
     std::string teens[]={"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
     std::string orders[]={"", "thousand", "million", "billion"};
     std::string a;
-    std::string a2;
-    std::string a3;
+    bool f=false;
+    
     std::cout << "Enter string: " << std::flush;
     std::cin>> number;
 
@@ -39,7 +39,10 @@ int main(){
     if (number == 0){
         std::cout << "zero" <<std::endl;
     }
-
+    if (number < 0){
+        number*=-1;
+        f=true;
+    }
     while (number != 0){
         d = number%1000;
         b = d;
@@ -119,7 +122,13 @@ int main(){
         }
     }
     
-    std::cout << "a= "<< a <<std::endl;
+    
+    if (f){
+        std::cout << "result= -" << a <<std::endl;
+    }
+    else{
+        std::cout << "a= "<< a <<std::endl;
+    }
 
 //std::cout << "nnnnnnnnnnn= "<< 6%1000 <<std::endl;
 }
