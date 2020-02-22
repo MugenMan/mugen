@@ -6,7 +6,7 @@ int main(){
     std::string ones[]={"","one","two","three", "four", "five", "six", "seven", "eight", "nine"};
     std::string tens[]={"", "", "twenty", "thirty", "forty", "fivty", "sixty", "seventy", "eighty", "ninty"};
     std::string teens[]={"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-    std::string orders[]={"", "thousand", "million", "billion"};
+    std::string orders[]={"", "thousand", "million", "billion", "dddddd"};
     std::string buffer;
     std::string result;
     
@@ -25,10 +25,16 @@ int main(){
         one = three % 10;
         ten = three % 100/10;
         hudred = three / 100;
+        std::cout << "three= " << three <<std::endl;
+        std::cout << "number= " << number <<std::endl;
+        std::cout << "one= " << one <<std::endl;
+        std::cout << "ten= " << ten <<std::endl;
+        std::cout << "hudred= " << hudred <<std::endl;
         
         buffer = "";
         
-        order++; //кол-во троек/текущая тройка
+         //кол-во троек/текущая тройка
+        std::cout << "buffer1= " << buffer <<std::endl;
 
         if (ten == 1){
             buffer = teens[one];
@@ -37,32 +43,27 @@ int main(){
             buffer = tens[ten]+" "+ones[one];
         }
 
-
-        std::cout << "one= " << one <<std::endl;
-        std::cout << "ten= " << ten <<std::endl;
-        std::cout << "number= " << number <<std::endl;
-        std::cout << "hudred= " << hudred <<std::endl;
         std::cout << "buffer= " << buffer <<std::endl;
 
-    if (hudred == 0){
-        buffer = ones[hudred]+" " + buffer;
+    if (hudred !=0) {
+        buffer = ones[hudred] + " hundred " + buffer;
+        
     }
-    else {
-        buffer = " "+ones[hudred] + " hundred " + buffer;
-    }
-       
-        if (number != 0){
+
+    std::cout << "buffer= " << buffer <<std::endl;  
+        if (number != 0 && buffer!=" "){
             
-            buffer = ones[number] +" " + orders[order]+buffer;
+            //result = buffer +" "+orders[order] + result;
+            result=buffer+" "+orders[order]+" "+result;
+        }
+        if (number==0) {
             
-                result = buffer +" "+orders[order] + result;
-             
+                result=buffer+" "+orders[order]+" "+result;
             
         }
         //a = ones[hundred] + " hundred " + a;
         
-        
-        std::cout << "order= " << order <<std::endl;
+        order++;
         std::cout << "buffer= " << buffer <<std::endl;
         std::cout << "result= " << result <<std::endl;
         //
