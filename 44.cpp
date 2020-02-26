@@ -8,7 +8,7 @@ int main(){
     std::string teens[]={"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
     std::string orders[]={"", "thousand", "million", "billion", "dddddd"};
     std::string buffer;
-    std::string result;
+    std::string result="";
     bool a=false;
 
     std::cout << "Enter string: " << std::flush;
@@ -38,29 +38,48 @@ int main(){
         
          //кол-во троек/текущая тройка
         //std::cout << "buffer1= " << buffer <<std::endl;
-
+        std::cout << "ten=" << ten <<"="<<std::endl;
         if (ten == 1){
             buffer = teens[one];
         }
         else {
-            buffer = tens[ten]+" "+ones[one];
+            if (ten == 0){
+                buffer = ones[one]; 
+            }
+            else {
+                buffer = tens[ten]+" "+ones[one];
+            }
+            
         }
 
-        //std::cout << "buffer= " << buffer <<std::endl;
+        std::cout << "buffer=" << buffer <<"="<<std::endl;
 
         if (hudred !=0) {
-            buffer = ones[hudred] + " hundred " + buffer;
+            if (buffer==""){
+                buffer = ones[hudred] + " hundred" + buffer;
+            }
+            else{
+                buffer = ones[hudred] + " hundred " + buffer;
+            }
+            
         }
 
-    //std::cout << "buffer= " << buffer <<std::endl;  
-        if (number != 0 && buffer!=" "){
-            result=buffer+" "+orders[order]+" "+result;
+    std::cout << "buffer=" << buffer <<"="<<std::endl; 
+    std::cout << "result=" << result <<"="<<std::endl;  
+        if (number != 0){
+            if (buffer==""){
+                result=buffer+orders[order]+" "+result;
+            }
+            else {
+                result=buffer+" "+orders[order]+" "+result;
+            }
+            
         }
 
         if (number==0) {
             result=buffer+" "+orders[order]+" "+result;
         }
-        
+        std::cout << "result=" << result <<"="<<std::endl; 
         order++;
         //std::cout << "buffer= " << buffer <<std::endl;
         
@@ -68,7 +87,7 @@ int main(){
         //r = buffer + orders[order]+r;
     }
     if (a){
-        std::cout << "result= -" << result <<std::endl;
+        std::cout << "result= minus " << result <<std::endl;
     }
     else{
         std::cout << "result= " << result <<std::endl;
