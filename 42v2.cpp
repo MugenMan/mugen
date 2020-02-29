@@ -2,144 +2,95 @@
 #include <string>
 
 int main(){
-    int number, b, c = 0, d = 0, e = 0, f = 0;
+    int number, three, one, ten, hudred, order=0;
     std::string ones[]={"","one","two","three", "four", "five", "six", "seven", "eight", "nine"};
     std::string tens[]={"", "", "twenty", "thirty", "forty", "fivty", "sixty", "seventy", "eighty", "ninty"};
     std::string teens[]={"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-    std::string orders[]={"", "thousand", "million", "billion"};
-    //std::string nu;
+    std::string orders[]={"", "thousand", "million", "billion", "dddddd"};
+    std::string buffer;
+    std::string result="";
+    bool a=false;
 
     std::cout << "Enter string: " << std::flush;
-    //std::getline(std::cin, s); //вывод с пробелами
-
     std::cin>> number;
-    //std::cout << "khhkjhjk= "<< number%10 <<std::endl;
-    b = number;
-    e = number%100/10;
-    f = number/100;
-    while (b != 0){
-        b/=10;
-        //std::cout<< "b= " << b <<std::endl;
-        c++;
+
+    if (number == 0){
+        std::cout<< "zero" <<std::endl;
     }
-    //std::cout<< "c= " << c <<std::endl;
-
-
-
-    for (int i = 0; i < 10; i++){
-        if (c == 0){
-            std::cout << "zero" <<std::endl;
-            break;
+    if (number < 0){
+        number*=-1;
+        a=true;
+    }
+    while (number !=0){
+        
+        three = number%1000;
+        number = number / 1000;
+        one = three % 10;
+        ten = three % 100/10;
+        hudred = three / 100;
+        // std::cout << "three= " << three <<std::endl;
+        // std::cout << "number= " << number <<std::endl;
+        // std::cout << "one= " << one <<std::endl;
+        // std::cout << "ten= " << ten <<std::endl;
+        // std::cout << "hudred= " << hudred <<std::endl;
+        
+        buffer = "";
+        
+         //кол-во троек/текущая тройка
+        //std::cout << "buffer1= " << buffer <<std::endl;
+        std::cout << "ten=" << ten <<"="<<std::endl;
+        if (ten == 1){
+            buffer = teens[one];
         }
-        if (c == 1 && number != 0){
-            if (i == number){
-                std::cout << ones[i] <<std::endl;
+        else {
+            if (ten == 0){
+                buffer = ones[one]; 
             }
-        }
-        if (c == 2){
-            if (i == 1 && i*10 == number){
-                std::cout << teens[0] <<std::endl;
-                break;
-            }
-            if (i*10 == number){
-                std::cout << tens[i] <<std::endl;
-            }
-            if (i!=0 && 10+i == number){
-                std::cout << teens[i] <<std::endl;
-            }
-            if (number/10 > 1 && number%10 == i && i!=0){
-                
-            std::cout << tens[number/10] << " " << ones[i] <<std::endl;
-        }
-        }
-
-        if (c == 3 ){
-            if (i*100 == number){
-                std::cout << ones[i] << " hundred" <<std::endl;
-                break;
-            }
-            if (e == 0 && i == f && i > 0){
-                std::cout << ones[i] << " hundred " << ones[number%10] <<std::endl;
-                
-            }
-            if (e == 1 && i+10 == number%100){
-                std::cout << ones[f] << " hundred " << teens[i] <<std::endl;
-            }
-            if (e > 1 && i == number%10 ){
-                if (number%10 > 0){
-                    std::cout << ones[f] << " hundred " << tens[e] <<" "<< ones[i] <<std::endl;
-                }
-                else {
-                    std::cout << ones[f] << " hundred " << tens[e] <<std::endl;
-                }
-            }
-            //std::cout << ones[d] << "hundred" << ones[i] <<std::endl;
-        }
-
-        if (c >= 4){
-            d = number/1000;
-            //number = number%1000;
-            // f = number/100;
-            // int e1 = d%100/10;
-            //d=number%1000;
-            //std::cout << "hundred" <<std::endl;
-            // if (i*1000 == number){
-            //     std::cout << ones[i] << " hundred" <<std::endl;
-            //     break;
-            // }
-            for (i = 0; i < 10; i++){
-                
-            for (i = 0; i < 10; i++){
-
-            if (i*1000 == d){
-                std::cout <<ones[i] << " hundred" <<std::endl;
-                break;
-            }
-            if (d%100/10 == 0 && i == d/100 && i > 0){
-                std::cout << ones[i] << " hundred " << ones[d%10] <<std::endl;
-                
-            }
-            if (d%100/10 == 1 && i+10 == d%100){
-                std::cout << ones[d/100] << " hundred " << teens[i] <<std::endl;
-            }
-            if (d%100/10 > 1 && i == d%10 ){
-                if (d%10 > 0){
-                    std::cout << ones[d/100] << " hundred " << tens[d%100/10] <<" "<< ones[i] <<std::endl;
-                }
-                else {
-                    std::cout << ones[d/100] << " hundred " << tens[d%100/10] <<std::endl;
-                }
+            else {
+                buffer = tens[ten]+" "+ones[one];
             }
             
         }
-        d=number%1000;
-            }
-        }
-        // if (c == 4){
-        //     if (i*1000 == number){
-        //         std::cout << orders[1] <<std::endl;
-        //         break;
-        //     }
-        //     if (number%100/10 == 0 && i == number/1000 && i > 0){ //1000+100+9
-        //         std::cout << ones[i] << " " << orders[1] << " " << ones[number%1000/100] << " hundred " << ones[number%10] <<std::endl;
-                
-        //     }
-        //     if (number%100/10 == 1 && i+10 == number%100){ //1000+100+10
-        //         std::cout << ones[number/1000] << " " << orders[1] << " " << ones[number%1000/100] << " hundred " << teens[i] <<std::endl;
-        //     }
-        //     if (number%100/10 > 1 && i == number%10){ //1000+100+20+9
-        //         if (number%10 > 0){
-        //             std::cout << ones[number/1000] << " " << orders[1] << " " << ones[number%1000/100] << " hundred " << tens[number%100/10] <<" "<< ones[number%10] <<std::endl;
-        //         }
-        //         else {
-        //             std::cout << ones[number/1000] << " " << orders[1] << " " << ones[number%1000/100] <<" hundred " << tens[number%100/10] <<std::endl;
-        //         }
-        //     }
-        // }
-    
-       
-        
-    }
-//std::cout << "nnnnnnnnnnn= "<< number%1000 <<std::endl;
 
+        std::cout << "buffer=" << buffer <<"="<<std::endl;
+
+        if (hudred !=0) {
+            if (buffer==""){
+                buffer = ones[hudred] + " hundred" + buffer;
+            }
+            else{
+                buffer = ones[hudred] + " hundred " + buffer;
+            }
+            
+        }
+
+    std::cout << "buffer=" << buffer <<"="<<std::endl; 
+    std::cout << "result=" << result <<"="<<std::endl;  
+        if (number != 0){
+            if (buffer==""){
+                result=buffer+orders[order]+" "+result;
+            }
+            else {
+                result=buffer+" "+orders[order]+" "+result;
+            }
+            
+        }
+
+        if (number==0) {
+            result=buffer+" "+orders[order]+" "+result;
+        }
+        std::cout << "result=" << result <<"="<<std::endl; 
+        order++;
+        //std::cout << "buffer= " << buffer <<std::endl;
+        
+        //
+        //r = buffer + orders[order]+r;
+    }
+    if (a){
+        std::cout << "result= minus " << result <<std::endl;
+    }
+    else{
+        std::cout << "result= " << result <<std::endl;
+    }
+    
 }

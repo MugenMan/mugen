@@ -46,6 +46,14 @@
         "fstream": "cpp",
         "optional": "cpp",
         "sstream": "cpp",
+<<<<<<< HEAD
         "deque": "cpp"
+=======
+        "atomic": "cpp",
+        "cstdarg": "cpp",
+        "deque": "cpp",
+        "algorithm": "cpp",
+        "memory_resource": "cpp"
+>>>>>>> 844e4b0ecb51fd41770053e325e1134d534c87ce
     }
 }
