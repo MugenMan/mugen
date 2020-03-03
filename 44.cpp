@@ -5,7 +5,7 @@
 
 int main(){
     srand(time(NULL));
-    int teams, games, bestpoints = 0, bestteams = 0, itemsi, itemsj;
+    int teams, games, bestpoints = 0, bestteams = 0;
 
     // std::cout << "Enter the number of teams and games: " << std::flush;
     // std::cin>> teams >> games;
@@ -64,15 +64,24 @@ int main(){
             sum[i]+= arr[i][j];
         }
     }
-
+    std::vector <int> items(teams);
     for (int i = 0; i < teams-1; i++){
+
         for (int k = i+1; k < teams; k++){
-            if (sum[i] > sum[k]){
+            if (sum[i] < sum[k]){
+                
+                //std::cout << " = "<< k+1 << " " << std::flush;
+                    //std::cout<<std::endl;
+                    //std::cout << " = "<< i << " " << std::flush;
                 for (int j = 0; j < games; j++){
-                    int counter = arr[i][j];
-                    arr[i][j] = arr[k][j];
-                    arr[k][j] = counter;
+                    
+                    int counter = arr[k][j];
+                    arr[k][j] = arr[i][j];
+                    arr[i][j] = counter;
+                    items[j] = k;
                 }
+                std::cout << " = "<< k << " " << std::flush;
+                
                 int counter = sum[i];
                 sum[i] = sum[k];
                 sum[k] = counter;
@@ -84,10 +93,11 @@ int main(){
 
     for (int i = 0; i < teams; i++){
         int sum = 0;
-        std::cout << "Teams "<< i+1 << ": " << std::flush;
+        std::cout << "Teams "<< items[i] << ": " << std::flush;
         for (int j = 0; j < games; j++){
             sum += arr[i][j];
             std::cout << arr[i][j] << " " << std::flush;
+            //std::cout << items[j] << " " << std::flush;
             
         }
         std::cout << "| Total points: " << sum << std::flush;
