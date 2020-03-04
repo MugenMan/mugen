@@ -95,3 +95,43 @@ int main(){
     }
 
 }
+
+
+
+
+
+
+
+
+for (int i = 0; i < teams-1; i++){
+
+        for (int k = i+1; k < teams; k++){
+            if (sum1[0][k] < sum1[k][i]){
+                for (int j = 1; j < games+1; j++){
+                    int counter = arr[k][j];
+                    arr[k][j] = arr[i][j];
+                    arr[i][j] = counter;
+                    
+                }
+                int counter = sum1[i][i];
+                sum1[i][i] = sum1[k][i];
+                sum1[k][i] = counter;
+            }
+        }
+    }
+
+    std::cout<<std::endl;
+
+
+    for (int i = 0; i < teams; i++){
+        int sum = 0;
+        //std::cout << "Teams "<< items[i] << ": " << std::flush;
+        for (int j = 0; j < games; j++){
+            sum += arr[i][j];
+            std::cout << arr[i][j] << " " << std::flush;
+            //std::cout << items[j] << " " << std::flush;
+            
+        }
+        std::cout << "| Total points: " << sum << std::flush;
+        std::cout<<std::endl;
+    }
