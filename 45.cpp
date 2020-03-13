@@ -2,11 +2,10 @@
 #include <string>
 #include <vector>
 
-int x, y;
-    std::vector <std::vector <char> > arr;
-    std::vector <std::vector <char> > new_arr;
-    bool x0 = false;
-    int index = 0;
+int x, y, index = 0;
+std::vector <std::vector <char> > arr;
+std::vector <std::vector <char> > new_arr;
+bool x0, ch = false;
 
 void massiv()
     {
@@ -43,16 +42,82 @@ void massiv()
             std::cout<<std::endl;
         }
     }
+
+void check()
+{   //ch=false;
+    char x_or_0;
+    if (x0)
+    {
+        x_or_0 ='0';
+    }
+    else
+    {
+       x_or_0 ='x'; 
+    }
     
+    if ((arr[0][0] == x_or_0 && arr[0][1] == x_or_0 && arr[0][2] == x_or_0 ) || 
+    (arr[1][0] == x_or_0 && arr[1][1] == x_or_0 && arr[1][2] == x_or_0 ) ||
+    (arr[2][0] == x_or_0 && arr[2][1] == x_or_0 && arr[2][2] == x_or_0 ) ||
+    (arr[0][0] == x_or_0 && arr[1][0] == x_or_0 && arr[2][0] == x_or_0 ) ||
+    (arr[0][1] == x_or_0 && arr[1][1] == x_or_0 && arr[2][1] == x_or_0 ) ||
+    (arr[0][2] == x_or_0 && arr[1][2] == x_or_0 && arr[2][2] == x_or_0 ) ||
+    (arr[0][2] == x_or_0 && arr[1][1] == x_or_0 && arr[0][2] == x_or_0 ) ||
+    (arr[0][0] == x_or_0 && arr[1][1] == x_or_0 && arr[2][2] == x_or_0 )
+    )
+    {   if (x0)
+        {
+            std::cout <<"win: 0"<< std::endl;
+        }
+        else
+        {
+            std::cout <<"win: X"<< std::endl;
+        }
+       ch = true;
+    }
+    // if ((arr[0][0] && arr[0][1] && arr[0][2] == '0') || 
+    // (arr[1][0] && arr[1][1] && arr[1][2] == '0') ||
+    // (arr[2][0] && arr[2][1] && arr[2][2] == '0') ||
+    // (arr[0][0] && arr[1][0] && arr[2][0] == '0') ||
+    // (arr[0][1] && arr[1][1] && arr[2][1] == '0') ||
+    // (arr[0][2] && arr[1][2] && arr[2][2] == '0') ||
+    // (arr[0][2] && arr[1][1] && arr[0][2] == '0') ||
+    // (arr[0][0] && arr[1][1] && arr[2][2] == '0')
+    // )
+    // {   if (x0)
+    //     {
+    //         std::cout <<"win: 0"<< std::endl;
+    //     }
+    //     else
+    //     {
+    //         std::cout <<"win: X"<< std::endl;
+    //     }
+    //    ch = true;
+    // }
+    if (index == 9)
+    {
+        std::cout <<"Draw"<< std::endl;
+        ch=true;
+    }
+}
+
 void vvod()
 {   
     bool repeat=true;
     
     while (repeat!=false)
     {       
-        
+        std::cout <<index<< std::endl;
         repeat=true;
-        //std::cout <<"Turn: "<< std::endl;
+        if (x0)
+        {
+            std::cout <<"Turn: X"<< std::endl;
+        }
+        else
+        {
+            std::cout <<"Turn: Y"<< std::endl;
+        }
+        
+        
         std::cout <<"Enter cell number:"<< std::endl;
         std::cout <<"x: "<< std::flush;
         std::cin >> x;
@@ -60,18 +125,22 @@ void vvod()
         std::cin >> y;
         //arr[0][0]='x';
         std::cout << std::endl;
-        if (x < 4 && y < 4 && arr[x-1][y-1] != 'x' && arr[x-1][y-1] != '0')
+        if (x < 4 && y < 4 && x != 0 && y != 0 && arr[x-1][y-1] != 'x' && arr[x-1][y-1] != '0')
         {   
             repeat=false;
             index++;
             //x0=true;
         }
-        if (x0 == true)
+        if (repeat)
+        {
+            std::cout <<"\nError. Repeat enter cell number:"<< std::endl;
+        }
+        if (x0 == true && !repeat)
         {
             arr[x-1][y-1]='x';
             x0=false;
         }
-        else
+        else if (x0 == false && !repeat)
         {
            arr[x-1][y-1]='0';
            x0=true;
@@ -79,18 +148,20 @@ void vvod()
         
         
         massiv();
-        if (repeat)
-        {
-            std::cout <<"\nError. Repeat enter cell number:"<< std::endl;
-        }
+        
+        
         //x0=false;
     }
-    while (index < 9)
+    check();
+    while (ch != true)
     {
         vvod();
     }
     
 }
+
+
+
 int main(){
     char x_0;
     bool flag = false;
@@ -102,9 +173,18 @@ int main(){
         std::cout <<"I am: "<< std::flush;
         std::cin >> x_0;
         //std::cout <<x_0<< std::endl;
+        //if (x_0 != 'x' || x_0 != '0')
         if (x_0 != 'x' )
         {
             flag=true;
+        }
+        else
+        {
+          fl=true;  
+        }
+        if (x_0 != '0')
+        {
+            flag=true;    
         }
         else
         {
@@ -117,6 +197,15 @@ int main(){
             std::cout <<"\nError. Repeat:"<< std::endl;
         }
     }
+    if (x_0 == 'x')
+    {
+        x0 = true;
+    }
+    else
+    {
+        x0 = false;
+    }
+    
     massiv();
     //arr[0][0]='x';
     vvod();
