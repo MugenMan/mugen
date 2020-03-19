@@ -5,7 +5,7 @@
 int x, y, index = 0;
 std::vector <std::vector <char> > arr;
 std::vector <std::vector <char> > new_arr;
-bool x0, ch = false;
+bool x0, ch = false;//xor0
 
 void massiv()
     {
@@ -55,15 +55,19 @@ void check()
        x_or_0 ='x'; 
     }
     
-    if ((arr[0][0] == x_or_0 && arr[0][1] == x_or_0 && arr[0][2] == x_or_0 ) || 
-    (arr[1][0] == x_or_0 && arr[1][1] == x_or_0 && arr[1][2] == x_or_0 ) ||
-    (arr[2][0] == x_or_0 && arr[2][1] == x_or_0 && arr[2][2] == x_or_0 ) ||
-    (arr[0][0] == x_or_0 && arr[1][0] == x_or_0 && arr[2][0] == x_or_0 ) ||
-    (arr[0][1] == x_or_0 && arr[1][1] == x_or_0 && arr[2][1] == x_or_0 ) ||
-    (arr[0][2] == x_or_0 && arr[1][2] == x_or_0 && arr[2][2] == x_or_0 ) ||
-    (arr[0][2] == x_or_0 && arr[1][1] == x_or_0 && arr[0][2] == x_or_0 ) ||
-    (arr[0][0] == x_or_0 && arr[1][1] == x_or_0 && arr[2][2] == x_or_0 )
-    )
+    // if ((arr[0][0] == x_or_0 && arr[0][1] == x_or_0 && arr[0][2] == x_or_0 ) || 
+    // (arr[1][0] == x_or_0 && arr[1][1] == x_or_0 && arr[1][2] == x_or_0 ) ||
+    // (arr[2][0] == x_or_0 && arr[2][1] == x_or_0 && arr[2][2] == x_or_0 ) ||
+    // (arr[0][0] == x_or_0 && arr[1][0] == x_or_0 && arr[2][0] == x_or_0 ) ||
+    // (arr[0][1] == x_or_0 && arr[1][1] == x_or_0 && arr[2][1] == x_or_0 ) ||
+    // (arr[0][2] == x_or_0 && arr[1][2] == x_or_0 && arr[2][2] == x_or_0 ) ||
+    // (arr[0][2] == x_or_0 && arr[1][1] == x_or_0 && arr[0][2] == x_or_0 ) ||
+    // (arr[0][0] == x_or_0 && arr[1][1] == x_or_0 && arr[2][2] == x_or_0 )
+    // )
+    for (int i = 0; i < 4; i++)
+    {
+        if ((arr[i][0] == x_or_0 && arr[i][1] == x_or_0 && arr[i][2] == x_or_0) ||
+        (arr[0][i] == x_or_0 && arr[1][i] == x_or_0 && arr[2][i] == x_or_0))
     {   if (x0)
         {
             std::cout <<"win: 0"<< std::endl;
@@ -73,6 +77,21 @@ void check()
             std::cout <<"win: X"<< std::endl;
         }
        ch = true;
+    }
+    
+    }
+    if ((arr[0][2] == x_or_0 && arr[1][1] == x_or_0 && arr[2][0] == x_or_0) ||
+    (arr[0][1] == x_or_0 && arr[1][1] == x_or_0 && arr[2][2] == x_or_0))
+    {
+      if (x0)
+        {
+            std::cout <<"win: 0"<< std::endl;
+        }
+        else
+        {
+            std::cout <<"win: X"<< std::endl;
+        }
+       ch = true;  
     }
     // if ((arr[0][0] && arr[0][1] && arr[0][2] == '0') || 
     // (arr[1][0] && arr[1][1] && arr[1][2] == '0') ||
@@ -106,7 +125,7 @@ void vvod()
     
     while (repeat!=false)
     {       
-        std::cout <<index<< std::endl;
+        //std::cout <<index<< std::endl;
         repeat=true;
         if (x0)
         {
@@ -114,7 +133,7 @@ void vvod()
         }
         else
         {
-            std::cout <<"Turn: Y"<< std::endl;
+            std::cout <<"Turn: 0"<< std::endl;
         }
         
         
@@ -165,50 +184,41 @@ void vvod()
 int main(){
     char x_0;
     bool flag = false;
-    bool fl = false;
     
-    while (fl!=true)
-    {
-        std::cout <<"You 'X' or '0' ?: "<< std::endl;
-        std::cout <<"I am: "<< std::flush;
-        std::cin >> x_0;
-        //std::cout <<x_0<< std::endl;
-        //if (x_0 != 'x' || x_0 != '0')
-        if (x_0 != 'x' )
-        {
-            flag=true;
-        }
-        else
-        {
-          fl=true;  
-        }
-        if (x_0 != '0')
-        {
-            flag=true;    
-        }
-        else
-        {
-          fl=true;  
-        }
-        
-        
-        if (flag)
-        {
-            std::cout <<"\nError. Repeat:"<< std::endl;
-        }
-    }
-    if (x_0 == 'x')
-    {
-        x0 = true;
-    }
-    else
-    {
-        x0 = false;
-    }
-    
+    x0 = true;
+
     massiv();
-    //arr[0][0]='x';
+   
     vvod();
+    // while (flag!=true)
+    // {
+    //     std::cout <<"You 'X' or '0' ?: "<< std::endl;
+    //     std::cout <<"I am: "<< std::flush;
+    //     std::cin >> x_0;
+    //     //std::cout <<x_0<< std::endl;
+    //     if (x_0 != 'x' && x_0 != '0')
+    //     {
+    //         std::cout <<"\nError. Repeat:"<< std::endl;
+    //     }
+    //     else
+    //     {
+    //         flag=true; 
+    //     }
+       
+    // }
+    // if (x_0 == 'x')
+    // {
+    //     x0 = true;
+    // }
+    // else
+    // {
+    //     x0 = false;
+    // }
+    
+    
+
+
+
     // for (int i = 0; i < 3; i++)
     // {
     //     int sum = 0;
