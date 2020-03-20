@@ -172,8 +172,10 @@ int main(){
         std::cout <<"You 'X' or '0' ?: "<< std::endl;
         std::cout <<"I am: "<< std::flush;
         std::cin >> x_0;
-        //std::cout <<x_0<< std::endl;
-        //if (x_0 != 'x' || x_0 != '0')
+        std::cout <<x_0<< std::endl;
+        if (x_0 != 'x' && x_0 != '0') {
+            std::cout <<"\nError1. Repeat:"<< std::endl;
+        }
         if (x_0 != 'x' )
         {
             flag=true;
