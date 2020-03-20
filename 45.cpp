@@ -93,30 +93,11 @@ void check()
         }
        ch = true;  
     }
-    // if ((arr[0][0] && arr[0][1] && arr[0][2] == '0') || 
-    // (arr[1][0] && arr[1][1] && arr[1][2] == '0') ||
-    // (arr[2][0] && arr[2][1] && arr[2][2] == '0') ||
-    // (arr[0][0] && arr[1][0] && arr[2][0] == '0') ||
-    // (arr[0][1] && arr[1][1] && arr[2][1] == '0') ||
-    // (arr[0][2] && arr[1][2] && arr[2][2] == '0') ||
-    // (arr[0][2] && arr[1][1] && arr[0][2] == '0') ||
-    // (arr[0][0] && arr[1][1] && arr[2][2] == '0')
-    // )
-    // {   if (x0)
-    //     {
-    //         std::cout <<"win: 0"<< std::endl;
-    //     }
-    //     else
-    //     {
-    //         std::cout <<"win: X"<< std::endl;
-    //     }
-    //    ch = true;
-    // }
-    if (index == 9)
-    {
-        std::cout <<"Draw"<< std::endl;
-        ch=true;
-    }
+    
+    std::cout <<ch<< std::endl;
+    std::cout <<index<< std::endl;
+    
+    
 }
 
 void vvod()
@@ -124,9 +105,13 @@ void vvod()
     bool repeat=true;
     
     while (repeat!=false)
-    {       
+    {     
+          
         //std::cout <<index<< std::endl;
         repeat=true;
+        
+        
+            
         if (x0)
         {
             std::cout <<"Turn: X"<< std::endl;
@@ -135,9 +120,7 @@ void vvod()
         {
             std::cout <<"Turn: 0"<< std::endl;
         }
-        
-        
-        std::cout <<"Enter cell number:"<< std::endl;
+            std::cout <<"Enter cell number:"<< std::endl;
         std::cout <<"x: "<< std::flush;
         std::cin >> x;
         std::cout <<"y: "<< std::flush;
@@ -164,14 +147,32 @@ void vvod()
            arr[x-1][y-1]='0';
            x0=true;
         }
-        
-        
         massiv();
+        
+        
+        
+        
+        
         
         
         //x0=false;
     }
     check();
+    if (index == 9){
+        check();
+        if (ch)
+        {
+            std::cout <<"Win x"<< std::endl;
+            ch=true;
+        }
+        else
+        {
+            std::cout <<"Draw"<< std::endl;
+            ch=true;
+        }
+        
+       
+    }
     while (ch != true)
     {
         vvod();
