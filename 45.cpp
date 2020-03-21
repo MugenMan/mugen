@@ -94,16 +94,23 @@ void check()
        ch = true;  
     }
     
-    std::cout <<ch<< std::endl;
-    std::cout <<index<< std::endl;
-    
-    
+    //std::cout <<ch<< std::endl;
+    //std::cout <<index<< std::endl;
+    //std::cout <<x0<< std::endl;
+    // if (index == 9 && !ch){
+    //         check();
+    //     }
+    if (ch){
+        std::cout <<"win: X"<< std::endl;
+    }
 }
 
 void vvod()
 {   
     bool repeat=true;
-    
+    if (index == 9){
+           repeat=false; 
+        }
     while (repeat!=false)
     {     
           
@@ -112,7 +119,10 @@ void vvod()
         
         
             
-        if (x0)
+        
+        
+        if (index != 9){
+            if (x0)
         {
             std::cout <<"Turn: X"<< std::endl;
         }
@@ -121,21 +131,22 @@ void vvod()
             std::cout <<"Turn: 0"<< std::endl;
         }
             std::cout <<"Enter cell number:"<< std::endl;
-        std::cout <<"x: "<< std::flush;
-        std::cin >> x;
-        std::cout <<"y: "<< std::flush;
-        std::cin >> y;
-        //arr[0][0]='x';
-        std::cout << std::endl;
-        if (x < 4 && y < 4 && x != 0 && y != 0 && arr[x-1][y-1] != 'x' && arr[x-1][y-1] != '0')
-        {   
-            repeat=false;
-            index++;
-            //x0=true;
-        }
-        if (repeat)
-        {
-            std::cout <<"\nError. Repeat enter cell number:"<< std::endl;
+            std::cout <<"x: "<< std::flush;
+            std::cin >> x;
+            std::cout <<"y: "<< std::flush;
+            std::cin >> y;
+            //arr[0][0]='x';
+            std::cout << std::endl;
+            if (x < 4 && y < 4 && x != 0 && y != 0 && arr[x-1][y-1] != 'x' && arr[x-1][y-1] != '0')
+            {   
+                repeat=false;
+                index++;
+                //x0=true;
+            }
+            if (repeat)
+            {
+                std::cout <<"\nError. Repeat enter cell number:"<< std::endl;
+            }
         }
         if (x0 == true && !repeat)
         {
@@ -147,34 +158,42 @@ void vvod()
            arr[x-1][y-1]='0';
            x0=true;
         }
-        massiv();
+        
+            massiv();
         
         
         
         
+        
+        if (ch){
+        std::cout <<"win: X"<< std::endl;
+    }
         
         
         
         //x0=false;
     }
     check();
-    if (index == 9){
-        check();
-        if (ch)
-        {
-            std::cout <<"Win x"<< std::endl;
-            ch=true;
-        }
-        else
-        {
-            std::cout <<"Draw"<< std::endl;
-            ch=true;
-        }
+    // if (index == 9){
+    //     check();
+    //     if (ch)
+    //     {
+    //         std::cout <<"Win x"<< std::endl;
+    //         ch=true;
+    //     }
+    //     else
+    //     {
+    //         std::cout <<"Draw"<< std::endl;
+    //         ch=true;
+    //     }
         
        
+    if (ch){
+        std::cout <<"win: X"<< std::endl;
     }
+    
     while (ch != true)
-    {
+    {   
         vvod();
     }
     
