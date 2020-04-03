@@ -96,7 +96,7 @@ void check()
         else
         {
             std::cout <<"win - X: "<<player_one<< std::endl;
-            win_0 = true;
+            win_x = true;
             
         }
        ch = true; 
@@ -116,7 +116,7 @@ void check()
 void txt()
 {
     ifs.open("x_0.txt");
-    std::cout <<": "<<ifs.good()<< std::endl;
+    //std::cout <<": "<<ifs.good()<< std::endl;
     if (ifs.good())
     {         
         while (!ifs.eof()) 
@@ -127,7 +127,7 @@ void txt()
             if (name == name_winner)
             {
                 ifs >> score;
-                std::cout <<score<< std::endl;
+                //std::cout <<score<< std::endl;
                 associative_arr[name_winner] = score+1;
                 bool_name = true;
             }
@@ -223,10 +223,11 @@ void vvod()
     if (ch){
         if (draw)
         {
-            name_winner = player_one;
-            txt();
             name_winner = player_two;
             txt();
+            name_winner = player_one;
+            txt();
+            
         }
         if (win_0)
         {
@@ -253,11 +254,47 @@ int main(){
     //player_one="oleg";
     std::cout << std::endl;
     std::cout<<"Enter the name of the player - 0: "<<std::flush;
-    //std::cin>>player_two;
-    player_two="sacha";
+    std::cin>>player_two;
     std::cout << std::endl;
     //name=player_one;
     std::cout<<name<<std::endl;
     massiv();
     vvod();
 }
+
+// в текст докум написано, к примеру, следующие:
+// oleg 1
+// denis 2
+// dima 4
+
+// запускаю программу, пишу имя1 - "jeka", имя2 - "misha"
+// довожу игру до ничьи (11 13 12 21 22 32 23 33 31).
+
+// в txt записывается так, как мне и нужно:
+// oleg 1
+// denis 2
+// dima 4
+// jeka 1
+// misha 1
+// ----------------------------------------------------
+// но в другом случаи ничьи появляется ошибка
+// в текст докум написано, к примеру, следующие:
+// oleg 1
+// denis 2
+// dima 4
+
+// запускаю программу, пишу имя1 - "sasha", имя2 - "oleg"
+// довожу игру до ничьи (11 13 12 21 22 32 23 33 31).
+
+// по идее, в текстовом документ должно быть напечатно:
+// oleg 2
+// denis 2
+// dima 4
+// sasha 1
+
+// в моем же случае 1 игрок увеличивает счёт, а 2 игрок вовсе не появляется:
+// oleg 2
+// denis 2
+// dima 4
+// однако, если я присвою имена игрокам наооборот, а именно имя1 - "oleg", имя2 - "sasha", то
+// выводится так, как мне и надо, те у олега - 2, а саша добавится со счетом 1
