@@ -1,1 +1,4 @@
-oleg 5
+jeka 1
+kiril 4
+oleg 4
+qwe 1

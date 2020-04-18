@@ -4,7 +4,7 @@
 #include <fstream>
 #include <map>
 
-int x, y, index = 0, score;
+int x, y, index = 0, score, score_win;
 std::string player_one, player_two, name, name_winner;
 std::vector <std::vector <char> > arr;
 //std::vector <std::vector <char> > new_arr;
@@ -122,32 +122,25 @@ void txt()
         while (!ifs.eof()) 
         {
             ifs >> name;
-                    
-            //player_one == name;
             if (name == name_winner)
             {
                 ifs >> score;
-                //std::cout <<score<< std::endl;
-                associative_arr[name_winner] = score+1;
+                score_win = score;
                 bool_name = true;
             }
-            else
-            {
-                //ifs >> name;
-                if (!bool_name)
-                {
-                    associative_arr[name_winner] = 1;
-                }
+            else{
                 ifs >> score;
                 associative_arr[name] = score;
-                        
             }
-                        // if (associative_arr.find(player_one) != associative_arr.end()){//элемент есть
-                        //     std::cout <<"test"<< std::endl;
-                        //     associative_arr.end()++;
-                        // }
+            
         }
-
+        if (bool_name){
+            associative_arr[name_winner] = score_win+1;
+        }
+        else{
+            //associative_arr[name] = score;
+            associative_arr[name_winner] = 1;
+        }
         ifs.close();
     }
     else
@@ -221,14 +214,7 @@ void vvod()
     check();
     }
     if (ch){
-        if (draw)
-        {
-            name_winner = player_two;
-            txt();
-            name_winner = player_one;
-            txt();
-            
-        }
+        
         if (win_0)
         {
             name_winner = player_two;
