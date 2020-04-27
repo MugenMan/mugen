@@ -7,7 +7,7 @@
 
 std::ofstream f;
 std::ifstream ifs;
-int word, grades_of_subject, n, number=999, index = 0;
+int word, grades_of_subject, n, number=999, index = 0, read = 0;
 std::string s;
 std::string subject;
 std::string a;
@@ -27,14 +27,7 @@ struct student
 };
 student st;
 std::vector<student> people;
-void chose()
-{
-    std::cout<<"1. Students list"<<std::endl;
-    std::cout<<"2. Add student"<<std::endl;
-    std::cout<<"3. Edit student"<<std::endl;
-    std::cout<<"Choose the desired item: "<<std::flush;
-    std::cin >> n;
-}
+
 void add_student()
 {
     f.open("new.txt", std::ios::binary);
@@ -56,8 +49,12 @@ void add_student()
             if (qwe == 1){
                 s="voronin";
             }
-        
+            if (s == "exit")
+            {   
+                break;
+            }
             st.last_name = s;
+            
             if (s == "exit")
             {
                 break;
@@ -71,7 +68,10 @@ void add_student()
             if (qwe == 1){
                 s="oleg";
             }
-
+            if (s == "exit")
+            {   
+                break;
+            }
             st.first_name = s;
             if (s == "exit")
             {
@@ -86,7 +86,10 @@ void add_student()
             if (qwe == 1){
                 s="alexsandrovich";
             }
-        
+            if (s == "exit")
+            {   
+                break;
+            }
             st.middle_name = s;
             if (s == "exit")
             {
@@ -102,7 +105,10 @@ void add_student()
             if (qwe == 1){
                 s="avb161";
             }
-
+            if (s == "exit")
+            {   
+                break;
+            }
             st.group = s;
             if (s == "exit")
             {
@@ -114,15 +120,30 @@ void add_student()
                 //st.arr_of_grade[s] = rand()%(5-2+1)+2;
                 //st.arr_of_grade[a] = grades_of_subject;
             //}
-            people.push_back(st);
+            if (s !="exit")
+            {
+                people.push_back(st);
+            }
             qwe++;
         }
     }
-
+    for (int i = 0; i < people.size(); i++)
+    { 
+        for (int j = 1; j < people.size()-1; j++)
+        {
+            if (people[i].last_name == people[j].last_name
+             && people[i].first_name == people[j].first_name
+             && people[i].middle_name == people[j].middle_name)
+            {
+                people.erase(people.begin());
+            }
+        }
+    }
     //people[number].arr_of_grade.begin()->first = a;
     int m = 1;
     int sz = people.size();
     f.write((char *)&sz, sizeof(int));
+    
     for (int i = 0; i < people.size(); i++)
     {   
         //int sz;
@@ -146,85 +167,111 @@ void add_student()
         f.write((char *)&sz, sizeof(int));
         f.write((char *)people[i].group.c_str(), people[i].group.size());
 
-
-        if (write){
-            if (i == number-1){
-        sz = people[number-1].arr_of_grade.begin()->first.size();
+std::cout <<i+1<<". "<<people[i].last_name<<" "<<people[i].first_name<<" "<<people[i].middle_name<<" "<<"("<<people[i].group<<")"<<std::endl;
+        
+        // sz = people[number-1].arr_of_grade.begin()->first.size();
+        // f.write((char *)&sz, sizeof(int));
+        // f.write((char *)people[number-1].arr_of_grade.begin()->first.c_str(), people[number-1].arr_of_grade.begin()->first.size());
+        // f.write((char *)&people[number-1].arr_of_grade.begin()->second, sizeof(int));
+        sz = people[i].arr_of_grade.size();
         f.write((char *)&sz, sizeof(int));
-        f.write((char *)people[number-1].arr_of_grade.begin()->first.c_str(), people[number-1].arr_of_grade.begin()->first.size());
-        f.write((char *)&people[number-1].arr_of_grade.begin()->second, sizeof(int));
+        //std::cout <<"dsds "<<people[i].arr_of_grade.size()<<"ds "<<std::endl;
+        // if (write){
+        if (write)
+        {
+            // if (i == number-1)
+            
+                for (auto it = people[i].arr_of_grade.begin(); it != people[i].arr_of_grade.end(); it++)
+                {
+                    sz = it->first.size();
+                    f.write((char *)&sz, sizeof(int));
+                    f.write((char *)it->first.c_str(), it->first.size());
+                    f.write((char *)&it->second, sizeof(int));
+                }  
+            //}
         }
-        }// if (write){
-        // for (auto it = people[i].arr_of_grade.begin(); it != people[i].arr_of_grade.end(); it++)
-        // {   
         //     //std::cout <<std::endl;
         //     std::cout <<it->first<<": "<<it->second<<std::endl;
-        //     sz = it->first.size();
-        //     f.write((char *)&sz, sizeof(int));
-        //     f.write((char *)it->first.c_str(), it->first.size());
-        //     f.write((char *)&it->second, sizeof(int));
+            // sz = it->first.size();
+            // f.write((char *)&sz, sizeof(int));
+            // f.write((char *)it->first.c_str(), it->first.size());
+            // f.write((char *)&it->second, sizeof(int));
             
         // }
         // }
 
     }
     f.close();
+    read++;
 }
 void read_txt()
 {
     ifs.open("new.txt", std::ios::binary);
-    //std::cout<<ifs.good()<<std::endl;
     int sz = people.size();
     ifs.read((char *)&sz, sizeof(int));
+    
     std::cout <<"Number of students: "<< sz <<std::endl;
     for (int i = 0; i < sz; i++)
     { 
-       
-        ifs.read((char *)&word, sizeof(int));
-        st.last_name.resize(word);
-        ifs.read(&(st.last_name[0]), word);
+        if (read == 0)
+        {
+            ifs.read((char *)&word, sizeof(int));
+            st.last_name.resize(word);
+            ifs.read(&(st.last_name[0]), word);
 
-        ifs.read((char *)&word, sizeof(int));
-        st.first_name.resize(word);
-        ifs.read(&(st.first_name[0]), word);
+            ifs.read((char *)&word, sizeof(int));
+            st.first_name.resize(word);
+            ifs.read(&(st.first_name[0]), word);
 
-        ifs.read((char *)&word, sizeof(int));
-        st.middle_name.resize(word);
-        ifs.read(&(st.middle_name[0]), word);
+            ifs.read((char *)&word, sizeof(int));
+            st.middle_name.resize(word);
+            ifs.read(&(st.middle_name[0]), word);
 
-        ifs.read((char *)&word, sizeof(int));
-        st.group.resize(word);
-        ifs.read(&(st.group[0]), word);
+            ifs.read((char *)&word, sizeof(int));
+            st.group.resize(word);
+            ifs.read(&(st.group[0]), word);
 
-        
-        int grades_of_subject;
-        std::string subject;
 
-        // for (auto it = people[i].arr_of_grade.begin(); it != people[i].arr_of_grade.end(); it++)
-        // {   
-           
-        //     for (int i = 0; i < 6; i++)
-        //     {
-        //         ifs.read((char *)&grades_of_subject, sizeof(int));
-        //         subject.resize(grades_of_subject);
-        //         ifs.read((char *)&grades_of_subject, sizeof(int));
-        //         st.arr_of_grade[subject] = grades_of_subject;
-        //     }
-            
-           
-            
-        // }
+            ifs.read((char *)&word, sizeof(int));
+            if (word != 0)
+            {
+                int grades_of_subject;
+                std::string subject;
+                for (int j = 0; j < word; j++)
+                {
+                    ifs.read((char *)&grades_of_subject, sizeof(int));
+                    subject.resize(grades_of_subject);
+                    ifs.read(&(subject[0]), grades_of_subject);
+                    ifs.read((char *)&grades_of_subject, sizeof(int));
+                    st.arr_of_grade[subject] = grades_of_subject;    
+                }
+
+            }
+        }
         if (index == 0){people.push_back(st);}
         
-    }
-    index++;
-    ifs.close();
-    
-    for (int i = 0; i < people.size(); i++)
-    { 
+        for (int j = 1; j < people.size()-1; j++)
+        {
+            if (people[i].last_name == people[j].last_name
+             && people[i].first_name == people[j].first_name
+             && people[i].middle_name == people[j].middle_name)
+            {
+                people.erase(people.begin());
+            }
+        }
         if (edit)
         {
             std::cout <<i+1<<". "<<people[i].last_name<<" "<<people[i].first_name<<" "<<people[i].middle_name<<" "<<"("<<people[i].group<<")"<<std::endl;
+            if (word != 0)
+            {
+                if (!edit)
+                {
+                    for (auto it =people[i].arr_of_grade.begin(); it != people[i].arr_of_grade.end(); it++)
+                    {   
+                        std::cout <<it->first<<": "<<it->second<<std::endl;
+                    } 
+                }
+            }
         }
         else 
         {
@@ -234,25 +281,30 @@ void read_txt()
             std::cout <<"First_name: "<<people[i].first_name<<std::endl;
             std::cout <<"middle_name: "<<people[i].middle_name<<std::endl;
             std::cout <<"Group: "<<people[i].group<<std::endl;
-        }
-        // for (auto it = people[i].arr_of_grade.begin(); it != people[i].arr_of_grade.end(); it++)
-        // {   
-             
-        //     std::cout <<it->first<<": "<<it->second<<std::endl;
             
-        // }
-        //std::cout <<people[i].arr_of_grade.begin()->first<<std::endl;
-        
-        
-
-
+        }
+        if (word != 0)
+        {
+            if (!edit)
+            {
+                for (auto it =people[i].arr_of_grade.begin(); it != people[i].arr_of_grade.end(); it++)
+                {   
+                    std::cout <<it->first<<": "<<it->second<<std::endl;
+                } 
+            }
+        }
+        st.arr_of_grade.clear();
     }
+    index++;
+    ifs.close();
+    std::cout <<std::endl;
     
 }
 void edit_student()
 {
-    //std::string a;
-    
+
+    number=1;
+    std::cout <<"number: "<<number<<std::endl;
     edit = true;
     while (number != 0)
     { 
@@ -262,11 +314,14 @@ void edit_student()
         std::cin >> number;
         if (number == 0)
         {
+            edit=false;
             break;
             
         }
         while (n != 8)
         {
+            std::cout<<std::endl;
+            std::cout <<number<<". "<<people[number-1].last_name<<" "<<people[number-1].first_name<<" "<<people[number-1].middle_name<<" "<<"("<<people[number-1].group<<")"<<std::endl;
             std::cout<<std::endl;
             std::cout<<"1. Change last name"<<std::endl;
             std::cout<<"2. Change the name"<<std::endl;
@@ -318,17 +373,15 @@ void edit_student()
                 std::cin >> a;
                 std::cout<<"Enter  grades of subject: "<<std::flush;
                 std::cin >> grades_of_subject;
-                //add_student();
-                //st.arr_of_grade[a] = grades_of_subject;
-                //people.push_back(st);
-                //people[number].group = a;
                 people[number-1].arr_of_grade[a] = grades_of_subject;
             }
             if (n == 6)
             {
                 std::cout <<std::endl;
-                std::cout<<"Enter the name: "<<std::flush;
+                std::cout<<"Enter subject name: "<<std::flush;
                 std::cin >> a;
+                std::cout<<"Enter  grades of subject: "<<std::flush;
+                std::cin >> grades_of_subject;
                 people[number-1].first_name = a;
                 
             }
@@ -342,15 +395,19 @@ void edit_student()
             }
             add_student();
         }
+        n = 0;
+        
     }
-    //if (number == 0){chose();}
-}
 
-int main ()
+}
+void choose()
 {
-    srand(time(NULL));
-    //int n;
-    chose();
+    std::cout<<"1. Students list"<<std::endl;
+    std::cout<<"2. Add student"<<std::endl;
+    std::cout<<"3. Edit student"<<std::endl;
+    std::cout<<"8. Exit"<<std::endl;
+    std::cout<<"Choose the desired item: "<<std::flush;
+    std::cin >> n;
     if (n == 1)
     {
         std::cout <<std::endl;
@@ -360,16 +417,22 @@ int main ()
 
     if (n == 2)
     {
-        //std::cout<<"Choose the desired item: "<<std::flush;
-        //std::cin >> n;
-        //f.open("new.txt", std::ios::binary);
+
         add_student();
-        //f.close();
+
     }
     if (n == 3)
     {
-        //ifs.open("new.txt", std::ios::binary);
+
         write = true;
         edit_student();
     }
+}
+
+int main ()
+{
+    srand(time(NULL));
+    while (n !=8){choose();}
+    
+    
 }  
