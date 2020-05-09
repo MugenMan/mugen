@@ -9,7 +9,7 @@ std::ifstream ifs;
 int word, n, number, grades_of_subject;
 std::string s;
 std::string a;
-
+bool s5 = false, s2 = false;
 std::vector <int> arr;
 
 struct student 
@@ -230,19 +230,105 @@ int print_all_one(int number)
     }
         
 }
+void sort()
+{
+    bool a = true, b = true;
+    std::vector<int> sort_5;
+    std::vector<int> sort_2;
+    print_all();
+    for (int i = 0; i < people.size(); i++)
+    {
+        if (arr[i] > 0)
+        {
+            for (auto it =people[i].arr_of_grade.begin();
+                it != people[i].arr_of_grade.end(); it++)
+                {   
+                    if (it->second != 5)
+                    {
+                        a = false;
+                    }
+                    if (it->second == 2)
+                    {
+                        b = false;
+                    }
+                } 
+        }
+        if (a)
+        {
+            sort_5.push_back(i);
+        }
+        if (!b)
+        {
+            sort_2.push_back(i);
+        }
+        
+    }
+    if (s5)
+    {
+        std::cout<<"List of Excellence: "<<std::endl;
+        for (int i = 0; i < sort_5.size(); i++)
+        {
+            std::cout <<std::endl;
+            std::cout <<"Last_name: "<<people[sort_5[i]].last_name<<std::endl;
+            std::cout <<"First_name: "<<people[sort_5[i]].first_name<<std::endl;
+            std::cout <<"middle_name: "<<people[sort_5[i]].middle_name<<std::endl;
+            std::cout <<"Group: "<<people[sort_5[i]].group<<std::endl;
+            //std::cout <<"arr[i] "<<arr[i]<<std::endl;
+            if (arr[sort_5[i]] > 0)
+            {
+                for (auto it =people[sort_5[i]].arr_of_grade.begin();
+                    it != people[sort_5[i]].arr_of_grade.end(); it++)
+                {   
+                    std::cout <<it->first<<": "<<it->second<<std::endl;
+                } 
+            }
+            
+        }
+    }
+    if (s2)
+    {
+       std::cout<<"List of underperforming: "<<std::endl;
+        for (int i = 0; i < sort_2.size(); i++)
+        {
+            std::cout <<std::endl;
+            std::cout <<"Last_name: "<<people[sort_2[i]].last_name<<std::endl;
+            std::cout <<"First_name: "<<people[sort_2[i]].first_name<<std::endl;
+            std::cout <<"middle_name: "<<people[sort_2[i]].middle_name<<std::endl;
+            std::cout <<"Group: "<<people[sort_2[i]].group<<std::endl;
+            //std::cout <<"arr[i] "<<arr[i]<<std::endl;
+            if (arr[sort_2[i]] > 0)
+            {
+                for (auto it =people[sort_2[i]].arr_of_grade.begin();
+                    it != people[sort_2[i]].arr_of_grade.end(); it++)
+                {   
+                    std::cout <<it->first<<": "<<it->second<<std::endl;
+                } 
+            }
+            
+        } 
+    }
+    
+    std::cout <<std::endl;
+
+
+}
 void delete_student()
 {
+    std::string answer;
     number = 1;
     print_short_all();
     while (number != 0)
     {
-        std::cout<<"Enter student number or enter '0'-exit: "<<std::flush;
+        std::cout<<"Enter student number: "<<std::flush;
         std::cin >> number;
-        if (number == 0)
+
+        std::cout<<"Are you sure you want to remove the student?\nEnter n (no) or y (yes): "<<std::flush;
+        std::cin >> answer;
+        if (answer == "n")
             {
                 break;  
             }
-        else
+        if (answer == "y")
         {
             people.erase(people.begin()+number-1);
         }
@@ -378,7 +464,7 @@ void choose()
         // else
         // {
             std::cout<<"\nStudents list"<<std::endl;
-            print_all();  
+            print_all();
         //}
         
         
@@ -397,6 +483,16 @@ void choose()
     if (n == 4)
     {
         delete_student();
+    }
+    if (n == 5)
+    {
+        s5 = true;
+        sort();
+    }
+    if (n == 6)
+    {
+        s2 = true;
+        sort();
     }
 }
 
